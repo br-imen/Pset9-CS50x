@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio of stocks
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Company's name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Current price</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in list %}
+          <tr>
+            <td>{{row.symbol}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.shares}}</td>
+            <td>{{"$%.2f"|format(row.price)}}</td>
+            <td>{{"$%.2f"|format(row.total_shares)}}</td>
+          </tr>
+      {% endfor %}
+      <tr>
+        <th colspan="4" style="text-align:right;">Stocks' Total</td>
+        <td>{{total_stocks}}</td>
+      </tr>
+      <tr>
+        <th colspan="4" style="text-align:right;">Cash</td>
+        <td>{{cash}}</td>
+      </tr>
+      <tr>
+        <th colspan="4" style="text-align:right;">Total</td>
+        <td>{{total}}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
